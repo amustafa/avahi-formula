@@ -12,6 +12,7 @@ Installs avahi. It can also optionally install bonjour compatability and python 
 
 
   bonjour-compatible: True
+  
   include-python-wrappers: True
 
 
