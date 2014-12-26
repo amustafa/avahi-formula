@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone='no'?>
+ <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+ <service-group>
+{%- set service_info =salt['pillar.get']("avahi:services:%s" % avahi_service_in_progress) %}
+   <name>{{ avahi_service_in_progress }}</name>
+   <service>
+     <type>{{ service_info.get("type") }}</type>
+     <subtype>{{ service_info.get("subtype") }}</subtype>
+     <port>{{ service_info.get("port") }}</port>
+{%- set service_vars = service_info.get("service-vars") %}
+{%- for service_var in service_vars.keys() %}
+       <txt-record>{{service_var}}={{service_vars.get(service_var)}}</txt-record>
+{%- endfor %}
+   </service>
+</service-group>

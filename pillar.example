@@ -1,0 +1,37 @@
+avahi:
+  bonjour-compatible: True
+  include-python-wrappers: True
+  dconf:
+    server:
+      browse-domains:  "0pointer.de, zeroconf.org"
+      use-ipv4:  yes
+      use-ipv6:  no
+      ratelimit-interval-usec:  1000000
+      ratelimit-burst: 990
+    wide-area:
+      enable-wide-area: yes
+    publish:
+    reflector:
+    rlimits:
+      rlimit-core: 0
+      rlimit-data: 4194304
+      rlimit-fsize: 0
+      rlimit-nofile: 768
+      rlimit-stack: 4194304
+      rlimit-nproc: 3
+  hosts: []
+  services:
+    yourXXPrnterName:
+      type: _ippX._tcp
+      subtype: _universal._sub._ipp._tcp
+      port: 631
+      service-vars:
+        txtver: 1
+        qtotal: 1
+    yourXXOTHERPrnterName:
+      type: _ippY._tcp
+      subtype: _univdersal._sub._ipp._tcp
+      port: 631
+      service-vars:
+        txtver: 5
+        qtotal: 7

@@ -1,0 +1,23 @@
+{% set avahi = salt['grains.filter_by']({
+    'Ubuntu': {
+        'package': 'avahi-daemon',
+        'proc_name': 'avahi-daemon',
+        'conf_path': '/etc/avahi/avahi-daemon.conf',
+        'conf_src': 'salt://avahi/files/avahi-daemon.conf',
+        'services_path': '/etc/avahi/services',
+        'service_template': 'salt://avahi/files/service_template.service',
+        'hosts_path': '/etc/avahi/hosts',
+        'host_template': 'salt://avahi/files/hosts',
+
+        "python-wrapper-packages": [
+            "python-dbus",
+            "python-gobject",
+            "python-gudev",
+            "python-avahi",
+        ],
+        "bonjour-compatability-packages": [
+            "libavahi-compat-libdnssd1",
+        ],
+    },
+},  grain='lsb_distrib_id', merge=salt['pillar.get']('avahi')) %}
+
