@@ -7,7 +7,7 @@ avahi:
       use-ipv4:  yes
       use-ipv6:  no
       ratelimit-interval-usec:  1000000
-      ratelimit-burst: 990
+      ratelimit-burst: 1000
     wide-area:
       enable-wide-area: yes
     publish:
@@ -21,17 +21,17 @@ avahi:
       rlimit-nproc: 3
   hosts: []
   services:
-    yourXXPrnterName:
-      type: _ippX._tcp
-      subtype: _universal._sub._ipp._tcp
-      port: 631
+    BoringService:
+      type: _boring_service._tcp
+      subtype:
+      port: 5555
       service-vars:
-        txtver: 1
-        qtotal: 1
-    yourXXOTHERPrnterName:
-      type: _ippY._tcp
-      subtype: _univdersal._sub._ipp._tcp
-      port: 631
+        foo: 2
+        bar: 1
+    SuperCoolService:
+      type: _super_cool_service._tcp
+      subtype:
+      port: 5556
       service-vars:
-        txtver: 5
-        qtotal: 7
+        foo: 5
+        bar: 7
